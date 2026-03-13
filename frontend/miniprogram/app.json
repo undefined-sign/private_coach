@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/coach-list/coach-list",
+    "pages/course-detail/course-detail",
+    "pages/schedule/schedule",
+    "pages/order-list/order-list",
+    "pages/order-detail/order-detail",
+    "pages/review-list/review-list",
+    "pages/user-center/user-center",
+    "pages/coach-center/coach-center",
+    "pages/coach-courses/coach-courses",
+    "pages/coach-schedule/coach-schedule",
+    "pages/coach-orders/coach-orders",
+    "pages/coach-reviews/coach-reviews",
+    "pages/coach-profile/coach-profile",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarTitleText": "健身预约平台",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7fb",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#7a7f8c",
+    "selectedColor": "#1f6fff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/assets/tab-home.png",
+        "selectedIconPath": "/assets/tab-home-active.png"
+
+      },
+      {
+        "pagePath": "pages/order-list/order-list",
+        "text": "预约",
+        "iconPath": "/assets/tab-order.png",
+        "selectedIconPath": "/assets/tab-order-active.png"
+      },
+      {
+        "pagePath": "pages/user-center/user-center",
+        "text": "我的",
+        "iconPath": "/assets/tab-user.png",
+        "selectedIconPath": "/assets/tab-user-active.png"  
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

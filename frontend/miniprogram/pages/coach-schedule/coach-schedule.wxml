@@ -1,0 +1,108 @@
+<view class="page list-gap">
+  <view class="card" wx:if="{{loading}}">
+    <view class="section-title">加载中</view>
+    <view class="section-desc">正在获取排课信息...</view>
+  </view>
+
+  <view class="card" wx:elif="{{error}}">
+    <view class="section-title">提示</view>
+    <view class="section-desc">{{error}}</view>
+    <button class="ghost-btn" bindtap="loadPageData">重试</button>
+  </view>
+
+  <block wx:else>
+    <view class="card">
+      <view class="section-head">
+        <view class="section-title">排课管理</view>
+        <button class="primary-mini" bindtap="handleAddTap">新增排课</button>
+      </view>
+
+      <view class="filter-row">
+        <view class="filter-label">课程筛选</view>
+        <picker mode="selector" range="{{courseOptions}}" range-key="name" value="{{selectedCourseIndex}}" bindchange="handleFilterChange">
+          <view class="picker-value">{{(courseOptions[selectedCourseIndex] && courseOptions[selectedCourseIndex].name) || '全部课程'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{!scheduleList.length}}">
+      <view class="section-desc">暂无排课，点击“新增排课”开始创建。</view>
+    </view>
+
+    <view class="card schedule-item" wx:for="{{scheduleList}}" wx:key="id" wx:for-index="index">
+      <view class="schedule-head">
+        <view class="schedule-course">{{item.courseName}}</view>
+        <text class="status-pill {{item.statusClass}}">{{item.statusText}}</text>
+      </view>
+
+      <view class="section-desc">时段：{{item.slotText}}</view>
+      <view class="section-desc">预约人数：{{item.personText}}</view>
+
+      <view class="item-actions">
+        <button
+          class="edit-btn"
+          data-schedule-id="{{item.id}}"
+          wx:if="{{!item.isExpired && item.status !== 2}}"
+          catchtap="handleEditTap"
+        >编辑</button>
+        <button
+          class="danger-btn"
+          data-schedule-id="{{item.id}}"
+          wx:if="{{item.isExpired && item.status !== 2}}"
+          loading="{{deletingId === item.id}}"
+          disabled="{{deletingId > 0}}"
+          catchtap="handleDeleteTap"
+        >删除过期排课</button>
+      </view>
+    </view>
+
+    <view class="form-mask" wx:if="{{showForm}}" catchtap="handleCancelForm">
+      <view class="form-panel" catchtap="noopTap">
+        <view class="section-title">{{isEdit ? '编辑排课' : '新增排课'}}</view>
+
+        <view class="form-row">
+          <view class="form-label">课程</view>
+          <picker mode="selector" range="{{courses}}" range-key="name" value="{{formCourseIndex}}" bindchange="handleFormCourseChange" disabled="{{isEdit}}">
+            <view class="picker-value">{{(courses[formCourseIndex] && courses[formCourseIndex].name) || '请选择课程'}}</view>
+          </picker>
+        </view>
+
+        <view class="form-row">
+          <view class="form-label">日期</view>
+          <picker mode="date" value="{{form.date}}" bindchange="handleDateChange">
+            <view class="picker-value">{{form.date || '请选择日期'}}</view>
+          </picker>
+        </view>
+
+        <view class="double-row">
+          <view class="half-item">
+            <view class="form-label">开始时间</view>
+            <picker mode="time" value="{{form.startTime}}" bindchange="handleStartTimeChange">
+              <view class="picker-value">{{form.startTime}}</view>
+            </picker>
+          </view>
+          <view class="half-item">
+            <view class="form-label">结束时间</view>
+            <picker mode="time" value="{{form.endTime}}" bindchange="handleEndTimeChange">
+              <view class="picker-value">{{form.endTime}}</view>
+            </picker>
+          </view>
+        </view>
+
+        <input
+          class="form-input"
+          type="number"
+          placeholder="最多预约人数"
+          value="{{form.maxPersons}}"
+          data-field="maxPersons"
+          bindinput="handleInput"
+        />
+
+        <view class="form-actions">
+          <button class="ghost-btn" bindtap="handleCancelForm">取消</button>
+          <button class="primary-btn" loading="{{saving}}" disabled="{{saving}}" bindtap="handleSubmitForm">{{isEdit ? '保存修改' : '保存'}}</button>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

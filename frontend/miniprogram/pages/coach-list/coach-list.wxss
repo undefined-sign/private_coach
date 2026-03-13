@@ -1,0 +1,79 @@
+.coach-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.coach-item {
+  display: flex;
+  gap: 18rpx;
+  border: 2rpx solid #edf1fb;
+}
+
+.coach-avatar {
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1f6fff, #67b1ff);
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-main {
+  flex: 1;
+}
+
+.coach-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.coach-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.small-pill {
+  margin: 0;
+  font-size: 22rpx;
+  padding: 6rpx 14rpx;
+}
+
+.coach-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.tag {
+  padding: 6rpx 12rpx;
+  border-radius: 999rpx;
+  background: #eaf1ff;
+  color: #386ad7;
+  font-size: 22rpx;
+}
+
+.coach-intro {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.bottom-tip {
+  text-align: center;
+  font-size: 24rpx;
+  padding: 18rpx 0 8rpx;
+  color: #5d6473;
+}
+
+.error-tip {
+  color: #d93025;
+}

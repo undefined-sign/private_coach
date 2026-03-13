@@ -1,0 +1,64 @@
+<view class="page list-gap">
+  <view class="card profile-card">
+    <view class="profile-head" wx:if="{{user}}">
+      <view class="profile-avatar">{{user.nickname ? user.nickname[0] : '我'}}</view>
+      <view class="profile-main">
+        <view class="profile-row">
+          <view class="profile-name">{{user.nickname}}</view>
+          <text class="pill small-pill">{{user.role === 1 ? '教练身份' : '普通用户'}}</text>
+        </view>
+        <view class="section-desc">ID：{{user.id}}</view>
+      </view>
+    </view>
+    <view class="section-desc" wx:else>尚未登录，请先返回登录页。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-head">
+      <view class="section-title">教练入口</view>
+      <view class="section-desc role-tip">{{user && user.role === 1 ? '已开通' : '未开通'}}</view>
+    </view>
+    <view class="section-desc" wx:if="{{user && user.role !== 1}}">提交申请后即可开通教练中心。</view>
+    <view class="section-desc" wx:if="{{user && user.role === 1}}">你已是教练，可进入教练中心管理课程和排期。</view>
+    <button class="primary-btn" wx:if="{{user && user.role !== 1}}" bindtap="handleApplyTap">申请成为教练</button>
+    <button class="primary-btn" wx:if="{{user && user.role === 1}}" bindtap="handleGoCoachCenter">进入教练中心</button>
+  </view>
+
+  <view class="card" wx:if="{{showApplyForm}}">
+    <view class="section-title">填写申请信息</view>
+    <view class="section-desc">请填写简介、擅长项目和联系方式（静态申请）。</view>
+    <textarea
+      class="form-textarea"
+      maxlength="300"
+      placeholder="intro：请输入你的教练简介"
+      value="{{applyForm.intro}}"
+      data-field="intro"
+      bindinput="handleInput"
+    />
+    <input
+      class="form-input"
+      maxlength="128"
+      placeholder="skills：如 减脂、塑形、功能训练"
+      value="{{applyForm.skills}}"
+      data-field="skills"
+      bindinput="handleInput"
+    />
+    <input
+      class="form-input"
+      maxlength="64"
+      placeholder="contact：手机号/微信号"
+      value="{{applyForm.contact}}"
+      data-field="contact"
+      bindinput="handleInput"
+    />
+    <view class="form-actions">
+      <button class="ghost-btn" bindtap="handleCancelApply">取消</button>
+      <button class="primary-btn" bindtap="handleSubmitApply">提交申请</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">账号操作</view>
+    <button class="ghost-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+</view>

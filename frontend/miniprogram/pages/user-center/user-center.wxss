@@ -1,0 +1,107 @@
+.section-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.section-head .section-title {
+	margin-bottom: 0;
+}
+
+.role-tip {
+	font-size: 24rpx;
+	color: #5d6473;
+}
+
+.profile-card {
+	padding: 24rpx;
+}
+
+.profile-head {
+	display: flex;
+	align-items: center;
+	gap: 18rpx;
+}
+
+.profile-avatar {
+	width: 82rpx;
+	height: 82rpx;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #1f6fff, #67b1ff);
+	color: #fff;
+	font-size: 36rpx;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.profile-main {
+	flex: 1;
+}
+
+.profile-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12rpx;
+	margin-bottom: 8rpx;
+}
+
+.profile-name {
+	font-size: 34rpx;
+	font-weight: 600;
+	color: #1f2430;
+}
+
+.small-pill {
+	margin: 0;
+	font-size: 22rpx;
+	padding: 6rpx 14rpx;
+}
+
+.form-textarea {
+	width: 100%;
+	min-height: 140rpx;
+	box-sizing: border-box;
+	padding: 16rpx;
+	font-size: 26rpx;
+	border-radius: 12rpx;
+	background: #f7f9ff;
+	margin: 16rpx 0 12rpx;
+}
+
+.form-input {
+	height: 78rpx;
+	line-height: 78rpx;
+	box-sizing: border-box;
+	padding: 0 16rpx;
+	font-size: 26rpx;
+	border-radius: 12rpx;
+	background: #f7f9ff;
+	margin-bottom: 12rpx;
+}
+
+.form-actions {
+	display: flex;
+	gap: 12rpx;
+}
+
+.form-actions .ghost-btn,
+.form-actions .primary-btn {
+	flex: 1;
+}
+
+.primary-btn,
+.ghost-btn {
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.primary-btn::after,
+.ghost-btn::after {
+	border: 0;
+}

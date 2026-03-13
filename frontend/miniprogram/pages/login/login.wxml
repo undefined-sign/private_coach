@@ -1,0 +1,22 @@
+<view class="login-page">
+  <view class="bg-glow bg-glow-a"></view>
+  <view class="bg-glow bg-glow-b"></view>
+
+  <view class="hero-block">
+    <view class="brand-chip">PRIVATE COACH</view>
+    <view class="login-title">定制你的训练节奏</view>
+    <view class="login-desc">一键登录，快速匹配教练、课程与排期。</view>
+    <view class="benefits-row">
+      <view class="benefit-pill">真实教练</view>
+      <view class="benefit-pill">灵活预约</view>
+      <view class="benefit-pill">训练跟进</view>
+    </view>
+  </view>
+
+  <view class="login-card">
+    <view class="card-title">微信快捷登录</view>
+    <view class="card-desc">首次登录自动注册账号，立即开启训练计划。</view>
+    <button class="login-btn" bindtap="handleLogin">微信登录</button>
+    <view class="agreement-text">登录即表示你同意平台服务条款与隐私政策</view>
+  </view>
+</view>

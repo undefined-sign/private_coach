@@ -1,0 +1,6 @@
+<view class="page">
+  <view class="card">
+    <view class="section-title">教练资料</view>
+    <view class="section-desc">教练简介、擅长项目和状态维护后续在这里实现。</view>
+  </view>
+</view>

@@ -1,0 +1,151 @@
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-head .section-title {
+  margin-bottom: 0;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: #1f6fff;
+  font-weight: 600;
+}
+
+.coach-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.coach-item {
+  display: flex;
+  gap: 18rpx;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  background: #f7f9ff;
+}
+
+.coach-avatar {
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1f6fff, #67b1ff);
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-main {
+  flex: 1;
+}
+
+.coach-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.coach-name {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.small-pill {
+  margin: 0;
+  font-size: 22rpx;
+  padding: 6rpx 14rpx;
+}
+
+.coach-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.tag {
+  padding: 6rpx 12rpx;
+  border-radius: 999rpx;
+  background: #eaf1ff;
+  color: #386ad7;
+  font-size: 22rpx;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  align-items: stretch;
+}
+
+.course-item {
+  width: calc((100% - 16rpx) / 2);
+  background: #fbfcff;
+  border: 2rpx solid #edf1fb;
+  border-radius: 16rpx;
+  padding: 18rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 280rpx;
+  overflow: hidden;
+}
+
+.course-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10rpx;
+}
+
+.course-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 70%;
+}
+
+.level {
+  font-size: 22rpx;
+  color: #1f6fff;
+  background: #eaf1ff;
+  border-radius: 999rpx;
+  padding: 4rpx 10rpx;
+}
+
+.course-meta {
+  color: #5d6473;
+  font-size: 24rpx;
+}
+
+.course-intro {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  min-height: 120rpx;
+}
+
+.course-actions {
+  margin-top: auto;
+  padding-top: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12rpx;
+}
+
+.course-price {
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  background: #eaf1ff;
+  color: #1f6fff;
+  font-size: 24rpx;
+  font-weight: 700;
+}

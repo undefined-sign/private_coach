@@ -1,0 +1,77 @@
+<view class="page list-gap">
+  <view class="card">
+    <view class="section-head">
+      <view class="section-title">课程管理</view>
+      <button class="primary-mini" bindtap="handleAddTap" style="position: relative; left: 0rpx; top: 9rpx">+ 新建课程</button>
+    </view>
+    <view class="section-desc" wx:if="{{coachId}}">教练ID：{{coachId}}</view>
+  </view>
+
+  <view class="card" wx:if="{{showForm}}">
+    <view class="section-title">{{isEdit ? '修改课程' : '新增课程'}}</view>
+    <input
+      class="form-input"
+      placeholder="课程名称"
+      value="{{form.name}}"
+      data-field="name"
+      bindinput="handleInput"
+    />
+    <input
+      class="form-input"
+      placeholder="服务类型（例如：私教/小班课）"
+      value="{{form.serviceType}}"
+      data-field="serviceType"
+      bindinput="handleInput"
+    />
+    <input
+      class="form-input"
+      type="number"
+      placeholder="时长（分钟）"
+      value="{{form.duration}}"
+      data-field="duration"
+      bindinput="handleInput"
+    />
+    <input
+      class="form-input"
+      type="digit"
+      placeholder="价格（元）"
+      value="{{form.price}}"
+      data-field="price"
+      bindinput="handleInput"
+    />
+    <textarea
+      class="form-textarea"
+      placeholder="课程简介"
+      value="{{form.content}}"
+      data-field="content"
+      bindinput="handleInput"
+    />
+
+    <view class="form-actions">
+      <button class="ghost-btn" bindtap="handleCancelForm">取消</button>
+      <button class="primary-btn" bindtap="handleSubmitForm">保存</button>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{!list.length}}">
+    <view class="section-desc">暂无课程，点击右上角“新增课程”开始创建。</view>
+  </view>
+
+  <view class="course-list" wx:if="{{list.length}}">
+    <view class="card course-item" wx:for="{{list}}" wx:key="id" wx:for-index="index">
+      <view class="course-head">
+        <view class="course-name">{{item.name}}</view>
+        <view class="pill small-pill">{{item.level}}</view>
+      </view>
+      <view class="section-desc">服务类型：{{item.serviceType}}</view>
+      <view class="section-desc">课程时长：{{item.duration}} 分钟</view>
+      <view class="section-desc">课程价格：¥{{item.priceText}}</view>
+      <view class="section-desc">课程简介：{{item.intro}}</view>
+
+      <view class="item-actions">
+        <button class="ghost-btn" data-index="{{index}}" bindtap="handleEditTap">修改</button>
+        <button class="danger-btn" data-index="{{index}}" bindtap="handleDeleteTap">删除</button>
+      </view>
+    </view>
+  </view>
+</view>

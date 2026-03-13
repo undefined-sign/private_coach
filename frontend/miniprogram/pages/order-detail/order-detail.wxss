@@ -1,0 +1,58 @@
+.detail-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16rpx;
+	margin-bottom: 12rpx;
+}
+
+.order-status {
+	padding: 6rpx 14rpx;
+	border-radius: 999rpx;
+	font-size: 22rpx;
+	font-weight: 600;
+}
+
+.status-pending {
+	background: #e8f7ef;
+	color: #0b9b57;
+}
+
+.status-cancelled {
+	background: #f4f5f8;
+	color: #7a7f8c;
+}
+
+.status-done {
+	background: #eaf1ff;
+	color: #1f6fff;
+}
+
+.detail-list {
+	display: flex;
+	flex-direction: column;
+	gap: 18rpx;
+}
+
+.detail-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16rpx;
+}
+
+.label {
+	color: #7a7f8c;
+	font-size: 26rpx;
+}
+
+.value {
+	color: #1f2430;
+	font-size: 27rpx;
+	font-weight: 500;
+}
+
+.value.amount {
+	font-size: 32rpx;
+	font-weight: 700;
+}

@@ -1,0 +1,59 @@
+<view class="page list-gap">
+  <view class="card" wx:if="{{loading}}">
+    <view class="section-title">加载中</view>
+    <view class="section-desc">正在获取教练订单...</view>
+  </view>
+
+  <view class="card" wx:elif="{{error}}">
+    <view class="section-title">提示</view>
+    <view class="section-desc">{{error}}</view>
+    <button class="ghost-btn" bindtap="loadList">重试</button>
+  </view>
+
+  <block wx:else>
+    <view class="card tabs-card tabs-sticky">
+      <view class="status-tabs">
+        <view
+          class="tab-item {{activeTab === item.key ? 'tab-item-active' : ''}}"
+          wx:for="{{tabs}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="handleTabTap"
+        >{{item.label}}</view>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{!list.length}}">
+      <view class="section-title">订单列表</view>
+      <view class="section-desc" wx:if="{{activeTab === '0'}}">当前没有“正预约”订单。</view>
+      <view class="section-desc" wx:else>当前没有“已完成”订单。</view>
+    </view>
+
+    <view class="card order-item" wx:for="{{list}}" wx:key="id">
+      <view class="order-head">
+        <view class="order-course">{{item.courseName}}</view>
+        <text class="order-status {{item.statusClass}}">{{item.statusText}}</text>
+      </view>
+      <view class="order-meta">学员：{{item.userName}}</view>
+      <view class="order-meta">时段：{{item.slotText}}</view>
+      <view class="order-meta">{{item.serviceType}} · {{item.duration}} 分钟</view>
+
+      <view class="order-foot">
+        <view class="order-amount">{{item.amountText}}</view>
+        <view class="order-actions" wx:if="{{item.status === 0}}">
+          <button
+            class="mini-primary"
+            data-order-id="{{item.id}}"
+            data-status="{{item.status}}"
+            loading="{{completingId === item.id}}"
+            disabled="{{completingId > 0}}"
+            catchtap="handleCompleteTap"
+          >确认完成</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-tip" wx:if="{{loadingMore}}">正在加载更多...</view>
+    <view class="bottom-tip muted" wx:elif="{{!hasMore && list.length > 0}}">没有更多了</view>
+  </block>
+</view>

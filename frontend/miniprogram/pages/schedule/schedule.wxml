@@ -1,0 +1,49 @@
+<view class="page">
+  <view class="card" wx:if="{{loading}}">
+    <view class="section-title">加载中</view>
+    <view class="section-desc">正在获取课程排期信息...</view>
+  </view>
+
+  <view class="card" wx:elif="{{error}}">
+    <view class="section-title">提示</view>
+    <view class="section-desc">{{error}}</view>
+    <button class="ghost-btn" bindtap="loadScheduleInfo">重试</button>
+  </view>
+
+  <block wx:else>
+    <view class="card schedule-header">
+      <view class="section-title">{{course.name}}</view>
+      <view class="section-desc">{{course.intro}}</view>
+      <view class="meta-row">
+        <text class="pill">{{course.level}}</text>
+        <text class="pill" wx:if="{{course.serviceTypeText}}">{{course.serviceTypeText}}</text>
+        <text class="pill">{{course.duration}} 分钟</text>
+        <text class="pill" wx:if="{{course.coachName}}">{{course.coachName}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">排期展示区</view>
+      <view class="section-desc" wx:if="{{!scheduleList.length}}">当前暂无排期数据。</view>
+      <view class="slot-list" wx:else>
+        <view class="mock-slot" wx:for="{{scheduleList}}" wx:key="id">
+          <view class="slot-head">
+            <view class="slot-date">{{item.displayDate}}</view>
+            <text class="slot-status {{item.statusClass}}">{{item.statusText}}</text>
+          </view>
+          <view class="slot-foot">
+            <view class="slot-time">{{item.timeRange}}</view>
+            <button
+              class="reserve-btn"
+              wx:if="{{item.canReserve}}"
+              data-schedule-id="{{item.id}}"
+              loading="{{submittingScheduleId === item.id}}"
+              disabled="{{submittingScheduleId > 0}}"
+              bindtap="handleReserveTap"
+            >预约</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

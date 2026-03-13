@@ -1,0 +1,46 @@
+<view class="page list-gap">
+  <view class="card" wx:if="{{loading}}">
+    <view class="section-title">加载中</view>
+    <view class="section-desc">正在获取学员评价...</view>
+  </view>
+
+  <view class="card" wx:elif="{{error}}">
+    <view class="section-title">提示</view>
+    <view class="section-desc">{{error}}</view>
+    <button class="ghost-btn" bindtap="loadReviews">重试</button>
+  </view>
+
+  <block wx:else>
+    <view class="card summary-card">
+      <view class="section-title">评价管理</view>
+      <view class="section-desc">共 {{list.length}} 条（当前页）评价，支持删除无效评价。</view>
+    </view>
+
+    <view class="card" wx:if="{{!list.length}}">
+      <view class="section-title">暂无评价</view>
+      <view class="section-desc">当前还没有学员评价。</view>
+    </view>
+
+    <view class="card review-item" wx:for="{{list}}" wx:key="id">
+      <view class="review-head">
+        <view class="review-user">{{item.nickname}}</view>
+        <view class="review-stars">{{item.starsText}}</view>
+      </view>
+      <view class="review-course">课程：{{item.courseName}}</view>
+      <view class="review-content">{{item.content}}</view>
+      <view class="review-foot">
+        <view class="review-time">{{item.createdAtText}}</view>
+        <button
+          class="mini-danger"
+          data-review-id="{{item.id}}"
+          loading="{{deletingId === item.id}}"
+          disabled="{{deletingId > 0}}"
+          catchtap="handleDeleteTap"
+        >删除</button>
+      </view>
+    </view>
+
+    <view class="bottom-tip" wx:if="{{loadingMore}}">正在加载更多...</view>
+    <view class="bottom-tip muted" wx:elif="{{!hasMore && list.length > 0}}">没有更多了</view>
+  </block>
+</view>

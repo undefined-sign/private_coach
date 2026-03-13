@@ -1,0 +1,130 @@
+.coach-head-card {
+	display: flex;
+	align-items: center;
+	gap: 20rpx;
+	margin-bottom: 24rpx;
+}
+
+.coach-avatar {
+	width: 86rpx;
+	height: 86rpx;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #1f6fff, #67b1ff);
+	color: #fff;
+	font-size: 36rpx;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.coach-info {
+	flex: 1;
+}
+
+.coach-top {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16rpx;
+}
+
+.coach-title {
+	margin-bottom: 0;
+}
+
+.coach-badge {
+	margin: 4rpx 0 0;
+	white-space: nowrap;
+}
+
+.coach-tags {
+	margin-top: 10rpx;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10rpx;
+}
+
+.coach-contact {
+	margin-top: 6rpx;
+}
+
+.tag {
+	padding: 6rpx 12rpx;
+	border-radius: 999rpx;
+	background: #eaf1ff;
+	color: #386ad7;
+	font-size: 22rpx;
+}
+
+.course-list {
+	display: flex;
+	flex-direction: column;
+	gap: 18rpx;
+}
+
+.course-item {
+	border: 2rpx solid #edf1fb;
+	display: flex;
+	flex-direction: column;
+}
+
+.course-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 10rpx;
+}
+
+.course-name {
+	font-size: 30rpx;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.level {
+	font-size: 22rpx;
+	color: #1f6fff;
+	background: #eaf1ff;
+	border-radius: 999rpx;
+	padding: 4rpx 10rpx;
+}
+
+.course-meta {
+	color: #5d6473;
+	font-size: 24rpx;
+}
+
+.course-intro {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	min-height: 120rpx;
+}
+
+.course-actions {
+	margin-top: auto;
+	padding-top: 16rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12rpx;
+}
+
+.review-entry {
+	padding: 6rpx 12rpx;
+	border-radius: 999rpx;
+	font-size: 22rpx;
+	color: #1f6fff;
+	background: #edf3ff;
+}
+
+.course-price {
+	padding: 8rpx 14rpx;
+	border-radius: 999rpx;
+	background: #eaf1ff;
+	color: #1f6fff;
+	font-size: 24rpx;
+	font-weight: 700;
+}

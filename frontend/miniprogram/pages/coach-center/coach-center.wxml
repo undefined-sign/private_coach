@@ -1,0 +1,91 @@
+<view class="page list-gap coach-page">
+  <view class="card empty-card" wx:if="{{!user || user.role !== 1}}">
+    <view class="section-title">教练中心</view>
+    <view class="section-desc">你还不是教练，请先在“我的”页面提交申请。</view>
+  </view>
+
+  <block wx:else>
+    <view class="hero-card">
+      <view class="hero-top">
+        <view>
+          <view class="hero-title">教练工作台</view>
+          <view class="hero-subtitle">管理课程、排期和评价服务</view>
+        </view>
+        <view class="hero-badge">已认证</view>
+      </view>
+      <view class="hero-stats">
+        <view class="stat-item">
+          <view class="stat-label">当前身份</view>
+          <view class="stat-value">教练</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-label">资料状态</view>
+          <view class="stat-value">已完善</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card profile-card">
+      <view class="section-head">
+        <view class="section-title">教练信息</view>
+        <button class="edit-btn" bindtap="handleEditTap">编辑信息</button>
+      </view>
+
+      <view class="profile-row">
+        <view class="profile-label">简介</view>
+        <view class="profile-value">{{coachProfile && coachProfile.intro ? coachProfile.intro : '暂无'}}</view>
+      </view>
+      <view class="profile-row">
+        <view class="profile-label">擅长</view>
+        <view class="profile-value">{{coachProfile && coachProfile.skills ? coachProfile.skills : '暂无'}}</view>
+      </view>
+      <view class="profile-row">
+        <view class="profile-label">联系方式</view>
+        <view class="profile-value">{{coachProfile && coachProfile.contact ? coachProfile.contact : '暂无'}}</view>
+      </view>
+
+      <view class="edit-form" wx:if="{{showEditForm}}">
+        <view class="form-title">修改教练信息</view>
+        <textarea
+          class="form-textarea"
+          placeholder="请输入个人简介"
+          value="{{editForm.intro}}"
+          data-field="intro"
+          bindinput="handleInput"
+        />
+        <input
+          class="form-input"
+          placeholder="请输入擅长方向，例如：减脂,塑形,体态矫正"
+          value="{{editForm.skills}}"
+          data-field="skills"
+          bindinput="handleInput"
+        />
+        <input
+          class="form-input"
+          placeholder="请输入联系方式"
+          value="{{editForm.contact}}"
+          data-field="contact"
+          bindinput="handleInput"
+        />
+
+        <view class="form-actions">
+          <button class="ghost-btn" bindtap="handleCancelEdit">取消</button>
+          <button class="primary-btn" bindtap="handleSaveProfile">保存修改</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-head">
+        <view class="section-title">教练工作台</view>
+        <view class="section-tip">功能入口</view>
+      </view>
+      <view class="coach-grid">
+        <button class="ghost-btn" bindtap="handleGotoCourses">课程管理</button>
+        <button class="ghost-btn" bindtap="handleGotoSchedule">排期管理</button>
+        <button class="ghost-btn" bindtap="handleGotoOrders">预约订单</button>
+        <button class="ghost-btn" bindtap="handleGotoReviews">学员评价</button>
+      </view>
+    </view>
+  </block>
+</view>

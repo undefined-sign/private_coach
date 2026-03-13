@@ -1,0 +1,146 @@
+.tabs-card {
+	padding: 16rpx 20rpx;
+}
+
+.tabs-sticky {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	background: #f6f7fb;
+	box-shadow: 0 6rpx 20rpx rgba(31, 36, 48, 0.06);
+}
+
+.status-tabs {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12rpx;
+}
+
+.tab-item {
+	flex: 1;
+	text-align: center;
+	padding: 12rpx 8rpx;
+	border-radius: 999rpx;
+	font-size: 25rpx;
+	color: #5d6473;
+	background: #f3f5fb;
+}
+
+.tab-item-active {
+	background: #eaf1ff;
+	color: #1f6fff;
+	font-weight: 600;
+}
+
+.order-item {
+	border: 2rpx solid #edf1fb;
+}
+
+.order-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16rpx;
+	margin-bottom: 10rpx;
+}
+
+.order-course {
+	font-size: 30rpx;
+	font-weight: 600;
+	color: #1f2430;
+}
+
+.order-status {
+	padding: 6rpx 14rpx;
+	border-radius: 999rpx;
+	font-size: 22rpx;
+	font-weight: 600;
+}
+
+.status-pending {
+	background: #e8f7ef;
+	color: #0b9b57;
+}
+
+.status-cancelled {
+	background: #f4f5f8;
+	color: #7a7f8c;
+}
+
+.status-done {
+	background: #eaf1ff;
+	color: #1f6fff;
+}
+
+.order-meta {
+	margin-top: 8rpx;
+	color: #5d6473;
+	font-size: 25rpx;
+	line-height: 1.5;
+}
+
+.order-foot {
+	margin-top: 16rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12rpx;
+}
+
+.order-amount {
+	font-size: 34rpx;
+	font-weight: 700;
+	color: #1f2430;
+}
+
+.order-actions {
+	display: flex;
+	flex: 1;
+	min-width: 0;
+	justify-content: flex-end;
+	gap: 10rpx;
+}
+
+.mini-ghost,
+.mini-primary {
+	margin: 0;
+	padding: 0;
+	width: 128rpx;
+	height: 54rpx;
+	line-height: 54rpx;
+	font-size: 24rpx;
+	border-radius: 999rpx;
+	box-sizing: border-box;
+}
+
+.mini-ghost::after,
+.mini-primary::after {
+	border: none;
+}
+
+.mini-ghost {
+	background: #fff;
+	color: #5d6473;
+	border: 2rpx solid #d9deea;
+}
+
+.mini-ghost[disabled] {
+	opacity: 0.55;
+}
+
+.mini-primary {
+	background: #1f6fff;
+	color: #fff;
+}
+
+.mini-primary[disabled] {
+	opacity: 0.55;
+}
+
+.bottom-tip {
+	text-align: center;
+	font-size: 24rpx;
+	color: #5d6473;
+	padding: 8rpx 0 20rpx;
+}

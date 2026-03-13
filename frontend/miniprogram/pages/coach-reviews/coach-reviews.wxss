@@ -1,0 +1,91 @@
+.summary-card {
+	background: linear-gradient(180deg, #f7fbff, #f3f8ff);
+	border: 1rpx solid #e6efff;
+}
+
+.review-item {
+	display: flex;
+	flex-direction: column;
+	gap: 10rpx;
+}
+
+.review-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12rpx;
+}
+
+.review-user {
+	font-size: 30rpx;
+	font-weight: 700;
+	color: #1f2430;
+}
+
+.review-stars {
+	font-size: 24rpx;
+	font-weight: 600;
+	color: #ff8f2b;
+}
+
+.review-course {
+	font-size: 27rpx;
+	font-weight: 600;
+	color: #3f4f77;
+	background: #eaf0ff;
+	border: 1rpx solid #d8e4ff;
+	padding: 10rpx 18rpx;
+	border-radius: 999rpx;
+	display: inline-flex;
+	align-items: center;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.review-content {
+	font-size: 28rpx;
+	line-height: 1.65;
+	color: #2a3240;
+	word-break: break-all;
+}
+
+.review-foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12rpx;
+	margin-top: 6rpx;
+}
+
+.review-time {
+	font-size: 22rpx;
+	color: #7c8391;
+}
+
+.mini-danger {
+	margin: 0;
+	padding: 0 24rpx;
+	height: 64rpx;
+	line-height: 64rpx;
+	border-radius: 999rpx;
+	background: #fff3f5;
+	border: 2rpx solid #f3cdd4;
+	color: #d55668;
+	font-size: 24rpx;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.mini-danger::after {
+	border: 0;
+}
+
+.bottom-tip {
+	text-align: center;
+	color: #7a7f8c;
+	font-size: 24rpx;
+	padding: 8rpx 0 20rpx;
+}

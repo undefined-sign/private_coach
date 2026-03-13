@@ -1,0 +1,6 @@
+<view class="page">
+  <view class="card">
+    <view class="section-title">设置</view>
+    <view class="section-desc">账号设置、通知开关和系统信息后续在这里实现。</view>
+  </view>
+</view>
