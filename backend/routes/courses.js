@@ -262,27 +262,67 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 router.get('/', async (req, res, next) => {
-  const { coachId } = req.query;
+  const coachId = Number(req.query.coachId || 0);
+  const page = Number(req.query.page || 0);
+  const pageSize = Number(req.query.pageSize || 0);
+  const usePagination = page > 0 && pageSize > 0;
 
   try {
-    let sql =
+    let whereSql = 'WHERE c.status = 1';
+    const whereParams = [];
+
+    if (coachId) {
+      whereSql += ' AND c.coach_id = ?';
+      whereParams.push(coachId);
+    }
+
+    if (!usePagination) {
+      const [rows] = await db.query(
+        `SELECT c.id, c.coach_id, c.name, c.service_type, c.duration, c.price, c.content,
+                COALESCE(NULLIF(u.nickname, ''), CONCAT('教练', co.id)) AS coach_name
+         FROM course c
+         LEFT JOIN coach co ON co.id = c.coach_id
+         LEFT JOIN user u ON u.id = co.user_id
+         ${whereSql}
+         ORDER BY c.id DESC`,
+        whereParams
+      );
+
+      return res.json({ list: rows.map(mapCourseRow), total: rows.length, hasMore: false });
+    }
+
+    const safePage = Math.max(1, Math.floor(page));
+    const safePageSize = Math.max(1, Math.min(50, Math.floor(pageSize)));
+    const offset = (safePage - 1) * safePageSize;
+
+    const [[countRow]] = await db.query(
+      `SELECT COUNT(*) AS total
+       FROM course c
+       ${whereSql}`,
+      whereParams
+    );
+
+    const total = Number(countRow.total || 0);
+    const listParams = [...whereParams, safePageSize, offset];
+    const [rows] = await db.query(
       `SELECT c.id, c.coach_id, c.name, c.service_type, c.duration, c.price, c.content,
               COALESCE(NULLIF(u.nickname, ''), CONCAT('教练', co.id)) AS coach_name
        FROM course c
        LEFT JOIN coach co ON co.id = c.coach_id
        LEFT JOIN user u ON u.id = co.user_id
-       WHERE c.status = 1`;
-    const params = [];
+       ${whereSql}
+       ORDER BY c.id DESC
+       LIMIT ? OFFSET ?`,
+      listParams
+    );
 
-    if (coachId) {
-      sql += ' AND c.coach_id = ?';
-      params.push(coachId);
-    }
-
-    sql += ' ORDER BY c.id DESC';
-
-    const [rows] = await db.query(sql, params);
-    return res.json({ list: rows.map(mapCourseRow) });
+    return res.json({
+      list: rows.map(mapCourseRow),
+      page: safePage,
+      pageSize: safePageSize,
+      total,
+      hasMore: offset + rows.length < total
+    });
   } catch (error) {
     return next(error);
   }

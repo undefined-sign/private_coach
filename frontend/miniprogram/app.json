@@ -3,6 +3,7 @@
     "pages/login/login",
     "pages/home/home",
     "pages/coach-list/coach-list",
+    "pages/course-list/course-list",
     "pages/course-detail/course-detail",
     "pages/schedule/schedule",
     "pages/order-list/order-list",

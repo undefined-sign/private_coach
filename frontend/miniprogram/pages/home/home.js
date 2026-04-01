@@ -7,7 +7,8 @@ Page({
     error: '',
     coaches: [],
     topCoaches: [],
-    courses: []
+    courses: [],
+    topCourses: []
   },
 
   onLoad() {
@@ -36,7 +37,8 @@ Page({
         loading: false,
         coaches: coachRes.list || [],
         topCoaches: (coachRes.list || []).slice(0, 2),
-        courses: courseRes.list || []
+        courses: courseRes.list || [],
+        topCourses: (courseRes.list || []).slice(0, 4)
       });
     } catch (error) {
       this.setData({
@@ -56,6 +58,12 @@ Page({
   handleMoreCoachTap() {
     wx.navigateTo({
       url: '/pages/coach-list/coach-list'
+    });
+  },
+
+  handleMoreCourseTap() {
+    wx.navigateTo({
+      url: '/pages/course-list/course-list'
     });
   },
 

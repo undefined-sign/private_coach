@@ -10,7 +10,7 @@ CREATE TABLE user (
 CREATE TABLE coach (
     id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '教练ID（主键）',
     user_id BIGINT NOT NULL UNIQUE COMMENT '绑定的用户ID（外键:user）',
-    intro TEXT COMMENT '个人简介',
+    intro TEXT COMMENT '个人简介',nickname
     skills VARCHAR(128) COMMENT '擅长项目',
     contact VARCHAR(64) COMMENT '联系方式（手机号/微信号等）',
     status TINYINT NOT NULL DEFAULT 1 COMMENT '状态（1有效/0禁用）',

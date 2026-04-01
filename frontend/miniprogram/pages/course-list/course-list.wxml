@@ -1,0 +1,38 @@
+<view class="page list-gap">
+  <view class="card" wx:if="{{loading}}">
+    <view class="section-title">加载中</view>
+    <view class="section-desc">正在获取课程列表...</view>
+  </view>
+
+  <view class="card" wx:elif="{{error && list.length === 0}}">
+    <view class="section-title">加载失败</view>
+    <view class="section-desc">{{error}}</view>
+    <button class="ghost-btn" bindtap="resetAndLoad">重新加载</button>
+  </view>
+
+  <block wx:else>
+    <view class="course-list">
+      <block wx:for="{{list}}" wx:key="id">
+        <view class="card course-item" data-course-id="{{item.id}}" bindtap="handleCourseTap">
+          <view class="course-head">
+            <view class="course-name">{{item.name}}</view>
+            <text class="level">{{item.level}}</text>
+          </view>
+          <view class="section-desc course-intro">{{item.intro}}</view>
+          <view class="course-meta-wrap">
+            <view class="course-meta">{{item.serviceType}} · {{item.duration}} 分钟 · {{item.coachName}}</view>
+          </view>
+          <view class="course-foot">
+            <view class="course-price">¥{{item.price}}</view>
+            <view class="course-action">查看排期 ></view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class="bottom-tip" wx:if="{{loadingMore}}">正在加载更多...</view>
+    <view class="bottom-tip muted" wx:elif="{{!hasMore && list.length > 0}}">无更多数据</view>
+    <view class="bottom-tip muted" wx:elif="{{list.length === 0}}">暂无课程数据</view>
+    <view class="bottom-tip error-tip" wx:elif="{{error}}">{{error}}</view>
+  </block>
+</view>

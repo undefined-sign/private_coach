@@ -40,9 +40,12 @@
     </view>
 
     <view class="card">
-      <view class="section-title">课程展示区</view>
+      <view class="section-head">
+        <view class="section-title">课程展示区</view>
+        <view class="section-more" bindtap="handleMoreCourseTap">更多></view>
+      </view>
       <view class="course-grid">
-        <block wx:for="{{courses}}" wx:key="id">
+        <block wx:for="{{topCourses}}" wx:key="id">
           <view class="course-item" data-course-id="{{item.id}}" bindtap="handleCourseTap">
             <view class="course-head">
               <view class="course-name">{{item.name}}</view>
